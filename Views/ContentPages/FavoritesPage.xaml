@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_MyWay.Views.ContentPages.FavoritesPage"
+             Title="FavoritesPage"
+             Loaded="ContentPage_Loaded"
+             Shell.NavBarIsVisible="False"
+             Padding="-2">
+    <Grid>
+        <Image x:Name="backgroundImage_first"
+               Aspect="AspectFill"></Image>
+        <Border Opacity="0.3"
+                BackgroundColor="Black"></Border>
+        <Grid Margin="16,8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"></RowDefinition>
+                <RowDefinition Height="48"></RowDefinition>
+                <RowDefinition Height="16"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Text="Закладки"
+                   TextColor="White"
+                   FontSize="24"
+                   Margin="16,0"
+                   FontFamily="Inter_Bold"
+                   Grid.Row="1"></Label>
+            <ActivityIndicator x:Name="isBusyIndicator"
+                               HeightRequest="32"
+                               WidthRequest="32"
+                               Color="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Grid.Row="3"
+                               Margin="0,0,0,32"></ActivityIndicator>
+            <RefreshView x:Name="refreshFavoriteCv"
+                         Refreshing="refreshFavoriteCv_Refreshing"
+                         Grid.Row="3">
+                <CollectionView x:Name="favoriteVisitsCv"
+                                Grid.Row="3"
+                                HorizontalScrollBarVisibility="Always">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="2"
+                                         Orientation="Vertical"
+                                         VerticalItemSpacing="16"
+                                         HorizontalItemSpacing="24"></GridItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border HeightRequest="224"
+                                    WidthRequest="144"
+                                    StrokeShape="RoundRectangle 20"
+                                    StrokeThickness="0"
+                                    AutomationId="{Binding VisitId}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="visitGesture"
+                                                          Tapped="visitGesture_Tapped"></TapGestureRecognizer>
+                                </Border.GestureRecognizers>
+                                <Grid>
+                                    <Image Source="{Binding CoverImage}"
+                                           Aspect="AspectFill"></Image>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="48"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition Height="64"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="8"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Border BackgroundColor="#4C444473"
+                                                    StrokeThickness="0"
+                                                    StrokeShape="RoundRectangle 2"
+                                                    Margin="6,14">
+                                                <Label TextColor="White"
+                                                       Text="{Binding Cost, StringFormat='{}{0:### ###}₽'}"
+                                                       FontSize="11"
+                                                       FontFamily="Inter-Medium"
+                                                       VerticalOptions="Center"
+                                                       HorizontalOptions="Center"
+                                                       AutomationId="{Binding Cost}"
+                                                       x:Name="costLabel"
+                                                       Loaded="costLabel_Loaded"></Label>
+                                            </Border>
+                                            <Border Grid.Column="2"
+                                                    BackgroundColor="#4C444473"
+                                                    StrokeThickness="0"
+                                                    StrokeShape="RoundRectangle 2"
+                                                    Margin="14"
+                                                    HorizontalOptions="End"
+                                                    Padding="4,0">
+                                                <Label TextColor="White"
+                                                       Text="{Binding Rating, StringFormat='★ {0}'}"
+                                                       FontSize="11"
+                                                       VerticalOptions="Center"
+                                                       HorizontalOptions="Center"></Label>
+                                            </Border>
+                                        </Grid>
+                                        <VerticalStackLayout Grid.Row="2"
+                                                             BackgroundColor="#4C444473">
+                                            <Label Text="{Binding Name}"
+                                                   TextColor="White"
+                                                   FontSize="11"
+                                                   FontFamily="Inter-Medium"
+                                                   LineBreakMode="WordWrap"
+                                                   Margin="12,4,0,0"></Label>
+                                            <Label Text="{Binding DescriptionShort}"
+                                                   TextColor="White"
+                                                   FontSize="9"
+                                                   FontFamily="Inter-Medium"
+                                                   LineBreakMode="WordWrap"
+                                                   Margin="12,0"></Label>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </Grid>
+    </Grid>
+</ContentPage>

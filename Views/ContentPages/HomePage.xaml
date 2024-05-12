@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_MyWay.Views.ContentPages.HomePage"
+             Shell.NavBarIsVisible="False"
+             Padding="-2"
+             Loaded="ContentPage_Loaded">
+    <Grid>
+        <Image x:Name="backgroundImage_second"
+               Aspect="AspectFill"></Image>
+        <Image x:Name="backgroundImage_first"
+               Aspect="AspectFill"></Image>
+        <Border Opacity="0.3"
+                BackgroundColor="Black"></Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="128"></RowDefinition>
+                <RowDefinition Height="16"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1"
+              Margin="16,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <HorizontalStackLayout x:Name="countrySelector">
+                    <HorizontalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapped_countrySelector"
+                                              Tapped="tapped_countrySelector_Tapped"></TapGestureRecognizer>
+                    </HorizontalStackLayout.GestureRecognizers>
+                    <Border WidthRequest="40"
+                            BackgroundColor="#FF5733"
+                            HeightRequest="40"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 8">
+                        <Image Source="geo_icon.png"
+                               Aspect="AspectFill"
+                               Margin="4"></Image>
+                    </Border>
+                    <VerticalStackLayout Margin="8,0"
+                                     HeightRequest="36"
+                                     VerticalOptions="Start">
+                        <Label Text="Текущая локация"
+                           TextColor="White"
+                           Opacity="0.6"></Label>
+                        <HorizontalStackLayout>
+                            <Label Text="Не выбрано"
+                                   x:Name="countryNameLabel"
+                               TextColor="White"
+                               FontFamily="Inter-Medium"></Label>
+                            <Label Text=">"
+                               TextColor="White"
+                               FontFamily="Inter-Medium"
+                               Margin="4,0"></Label>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+                <Border StrokeShape="RoundRectangle 50"
+                    Grid.Column="1"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    HorizontalOptions="End"
+                    BackgroundColor="#26FFFFFF"
+                    StrokeThickness="0">
+                    <Image Aspect="AspectFill"
+                           x:Name="profileIcon"
+                           Source="user_icon.png"
+                           Margin="2"></Image>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="3"
+              Margin="16,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border StrokeShape="RoundRectangle 5" 
+                        BackgroundColor="#26D9D9D9"
+                        StrokeThickness="0">
+                    <SearchBar Placeholder="Поиск"
+                               x:Name="searchVisit"
+                               SearchButtonPressed="searchVisit_SearchButtonPressed"
+                           BackgroundColor="#1AFFFFFF"
+                           PlaceholderColor="LightGray"
+                           TextColor="#FFFFFF"></SearchBar>
+                </Border>
+                <Border StrokeShape="RoundRectangle 5" 
+                        BackgroundColor="#26D9D9D9"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        StrokeThickness="0"
+                        Grid.Column="1"
+                        HorizontalOptions="End">
+                    <Border BackgroundColor="#1AFFFFFF"
+                            StrokeThickness="0">
+                        <ImageButton Source="close_icon.png"
+                                     Aspect="AspectFill"
+                                     Margin="6"
+                                     x:Name="clearSearchButton"
+                                     Clicked="clearSearchButton_Clicked"></ImageButton>
+                    </Border>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="5"
+              Margin="16,0">
+                <VerticalStackLayout Spacing="24">
+                    <Grid>
+                        <Label FontSize="16"
+                           FontFamily="Inter-Medium"
+                           Text="Популярные категории"
+                           TextColor="White"
+                           HorizontalOptions="Start"></Label>
+                    </Grid>
+                    <CollectionView x:Name="categoriesCv"
+                                    HorizontalScrollBarVisibility="Always">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal"
+                                               ItemSpacing="12"></LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid HeightRequest="72">
+                                    <VerticalStackLayout HorizontalOptions="Center"
+                                                         VerticalOptions="Center">
+                                        <RadioButton Style="{StaticResource categories_style}"
+                                                     AutomationId="{Binding CategoryId}"
+                                                     Content="{Binding CoverImage}"
+                                                     GroupName="categoriesGroup"
+                                                     x:Name="categoryRadioButton"
+                                                     CheckedChanged="categoryRadioButton_CheckedChanged">
+                                            <RadioButton.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="2"
+                                                                      Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                            </RadioButton.GestureRecognizers>
+                                        </RadioButton>
+                                        <Label Text="{Binding Name}"
+                                               TextColor="White"
+                                               FontSize="12"
+                                               Opacity="0.8"
+                                               HorizontalOptions="Center"></Label>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Grid>
+            <Grid Grid.Row="7"
+              Margin="16,0">
+                <VerticalStackLayout Spacing="16">
+                    <Grid>
+                        <Label FontSize="16"
+                           FontFamily="Inter-Medium"
+                           Text="Популярные места"
+                           TextColor="White"
+                           HorizontalOptions="Start"></Label>
+                        <!--<Label HorizontalOptions="End"
+                           VerticalOptions="Start"
+                           FontSize="14"
+                           FontFamily="Inter-Medium"
+                           Text="Показать все >"
+                           TextColor="White"
+                           Opacity="0.5"></Label>-->
+                    </Grid>
+                    <Grid>
+                        <CollectionView x:Name="trendingVisitsCv"
+                                        HorizontalScrollBarVisibility="Always">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"
+                                                   ItemSpacing="16"></LinearItemsLayout>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border HeightRequest="224"
+                                            WidthRequest="144"
+                                            StrokeShape="RoundRectangle 20"
+                                            StrokeThickness="0"
+                                            AutomationId="{Binding VisitId}">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="visitGesture"
+                                                                  Tapped="visitGesture_Tapped"></TapGestureRecognizer>
+                                        </Border.GestureRecognizers>
+                                        <Grid>
+                                            <Image Source="{Binding CoverImage}"
+                                                   Aspect="AspectFill"></Image>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="48"></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="64"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition Width="8"></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border BackgroundColor="#4C444473"
+                                                            StrokeThickness="0"
+                                                            StrokeShape="RoundRectangle 2"
+                                                            Margin="6,14">
+                                                        <Label TextColor="White"
+                                                               Text="{Binding Cost, StringFormat='{}{0:### ###}₽'}"
+                                                               FontSize="11"
+                                                               FontFamily="Inter-Medium"
+                                                               VerticalOptions="Center"
+                                                               HorizontalOptions="Center"
+                                                               AutomationId="{Binding Cost}"
+                                                               x:Name="costLabel"
+                                                               Loaded="costLabel_Loaded"></Label>
+                                                    </Border>
+                                                    <Border Grid.Column="2"
+                                                            BackgroundColor="#4C444473"
+                                                            StrokeThickness="0"
+                                                            StrokeShape="RoundRectangle 2"
+                                                            Margin="14,14,6,14"
+                                                            HorizontalOptions="End"
+                                                            Padding="4,0">
+                                                        <Label TextColor="White"
+                                                               Text="{Binding Rating, StringFormat='★ {0}'}"
+                                                               FontSize="11"
+                                                               VerticalOptions="Center"
+                                                               HorizontalOptions="Center"></Label>
+                                                    </Border>
+                                                </Grid>
+                                                <VerticalStackLayout Grid.Row="2"
+                                                                     BackgroundColor="#4C444473">
+                                                    <Label Text="{Binding Name}"
+                                                           TextColor="White"
+                                                           FontSize="11"
+                                                           FontFamily="Inter-Medium"
+                                                           LineBreakMode="WordWrap"
+                                                           Margin="12,4,0,0"></Label>
+                                                    <Label Text="{Binding DescriptionShort}"
+                                                           TextColor="White"
+                                                           FontSize="9"
+                                                           FontFamily="Inter-Medium"
+                                                           LineBreakMode="WordWrap"
+                                                           Margin="12,0"></Label>
+                                                </VerticalStackLayout>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

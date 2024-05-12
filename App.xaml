@@ -1,0 +1,63 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Frontend_MyWay"
+             x:Class="Frontend_MyWay.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Tab">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#161616" />
+                <Setter Property="Shell.TabBarTitleColor" Value="#F26623" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#FFFFFF" />
+            </Style>
+            <Style TargetType="RadioButton" x:Key="categories_style">
+                <Setter Property="ControlTemplate">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Grid>
+                                <VerticalStackLayout>
+                                    <Border x:Name="Container"
+                                            StrokeThickness="0"
+                                            WidthRequest="50"
+                                            HeightRequest="50"
+                                            BackgroundColor="#26FFFFFF">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="5"></RoundRectangle>
+                                        </Border.StrokeShape>
+                                        <Image Source="{TemplateBinding Content}"
+                                               Aspect="AspectFill"
+                                               Margin="6"/>
+                                    </Border>
+                                </VerticalStackLayout>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="CheckedStates">
+                                            <VisualState x:Name="Checked">
+                                                <VisualState.Setters>
+                                                    <Setter TargetName="Container"
+                                                            Property="Border.BackgroundColor" 
+                                                            Value="#FF5733" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Unchecked">
+                                                <VisualState.Setters>
+                                                    <Setter TargetName="Container" 
+                                                            Property="Border.BackgroundColor" 
+                                                            Value="#26FFFFFF" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

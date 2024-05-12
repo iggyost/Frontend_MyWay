@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_MyWay.Views.ContentPages.WelcomePage"
+             Title="WelcomePage"
+             Padding="-2">
+    <Grid>
+        <Image Source="background_waves.gif"
+               IsAnimationPlaying="True"
+               Aspect="AspectFill"
+               x:Name="backgroundImage"></Image>
+        <Grid>
+            <VerticalStackLayout Spacing="24"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Margin="0,0,0,128">
+                <Label Text="Добро пожаловать!"
+                       TextColor="White"
+                       FontSize="34"
+                       FontFamily="Inter-Bold"
+                       HorizontalOptions="Center"></Label>
+                <Label Text="Начните своё путешествие с MyWay"
+                       TextColor="White"
+                       FontSize="18"
+                       FontFamily="Inter-Medium"
+                       HorizontalOptions="Center"></Label>
+                <Button Text="Продолжить"
+                        TextColor="White"
+                        FontSize="16"
+                        FontFamily="Inter-Medium"
+                        BackgroundColor="#FF5733"
+                        BorderColor="#2BFFFFFF"
+                        x:Name="continueBtn"
+                        Clicked="continueBtn_Clicked"
+                        Padding="32,0"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Center"
+                        Margin="0,12"></Button>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

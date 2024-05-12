@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_MyWay.Views.ContentPages.VisitPage"
+             Title="VisitPage"
+             Padding="-2"
+             Loaded="ContentPage_Loaded">
+    <Grid>
+        <Image x:Name="coverImage"
+               Aspect="AspectFill"></Image>
+        <ImageButton Source="arrow_left_white.png"
+                     Aspect="AspectFill"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     WidthRequest="48"
+                     HeightRequest="48"
+                     Margin="16"
+                     x:Name="backBtn"
+                     Clicked="backBtn_Clicked"></ImageButton>
+        
+        <!--Favorite Button-->
+        <ImageButton Source="favorite_icon.png"
+                     HorizontalOptions="End"
+                     VerticalOptions="Start"
+                     WidthRequest="48"
+                     HeightRequest="48"
+                     Margin="16"
+                     x:Name="favoriteButton"
+                     Clicked="favoriteButton_Clicked"></ImageButton>
+        
+        <Border StrokeThickness="0"
+                StrokeShape="RoundRectangle 20,20,0,0"
+                VerticalOptions="End"
+                HeightRequest="340"
+                BackgroundColor="#4C000000">
+            <Grid Margin="24,16">
+                <VerticalStackLayout Spacing="4">
+                    <Label x:Name="nameLabel"
+                           TextColor="White"
+                           FontSize="20"
+                           FontFamily="Inter-Bold"></Label>
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="0.0"
+                               TextColor="#BFFFFFFF"
+                               FontSize="16"
+                               FontFamily="Inter-Medium"></Label>
+                        <Label Text="Оценка"
+                               TextColor="#BFFFFFFF"
+                               FontSize="16"
+                               FontFamily="Inter-Medium"></Label>
+                    </HorizontalStackLayout>
+                    <Grid Margin="0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <HorizontalStackLayout Spacing="4">
+                            <Image Source="difficult_icon.png"
+                                   HeightRequest="32"
+                                   WidthRequest="32"></Image>
+                            <VerticalStackLayout>
+                                <Label Text="Уровень"
+                                       TextColor="White"
+                                       FontSize="12"></Label>
+                                <Label x:Name="levelLabel"
+                                       TextColor="White"
+                                       FontSize="12"
+                                       FontFamily="Inter-Medium"></Label>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="4"
+                                               Grid.Column="1">
+                            <Image Source="distance_icon.png"
+                                   HeightRequest="32"
+                                   WidthRequest="32"></Image>
+                            <VerticalStackLayout>
+                                <Label Text="Расстояние"
+                                       TextColor="White"
+                                       FontSize="12"></Label>
+                                <Label x:Name="distanceLabel"
+                                       TextColor="White"
+                                       FontSize="12"
+                                       FontFamily="Inter-Medium"></Label>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Spacing="4"
+                                               Grid.Column="2"
+                                               HorizontalOptions="Center">
+                            <Image Source="time_icon.png"
+                                   HeightRequest="32"
+                                   WidthRequest="32"></Image>
+                            <VerticalStackLayout>
+                                <Label Text="Время"
+                                       TextColor="White"
+                                       FontSize="12"></Label>
+                                <Label x:Name="timeLabel"
+                                       TextColor="White"
+                                       FontSize="12"
+                                       FontFamily="Inter-Medium"></Label>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Grid>
+                    <ScrollView HeightRequest="96"
+                                VerticalScrollBarVisibility="Always">
+                        <Label LineBreakMode="WordWrap"
+                               x:Name="descriptionLabel"
+                               TextColor="White"
+                               FontSize="14"
+                               FontFamily="Inter-Medium"></Label>
+                    </ScrollView>
+                    <Button x:Name="goBtn"
+                            Clicked="goBtn_Clicked"
+                            HorizontalOptions="End"
+                            Margin="0,16"
+                            Padding="32,0"
+                            BackgroundColor="#FF5733"
+                            Text="Выбрать"
+                            FontSize="14"
+                            FontFamily="Inter-SemiBold"></Button>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

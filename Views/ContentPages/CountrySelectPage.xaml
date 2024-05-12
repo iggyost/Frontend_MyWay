@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_MyWay.Views.ContentPages.CountrySelectPage"
+             Title="CountrySelectPage"
+             BackgroundColor="#CDCDCD"
+             Loaded="ContentPage_Loaded">
+    <Grid>
+        <Image x:Name="blurBackgroundImage"
+               Aspect="AspectFill"></Image>
+        <VerticalStackLayout Margin="32,64"
+                             Spacing="12">
+            <Label Text="Куда вы хотите поехать?"
+                   TextColor="#0A2753"
+                   FontSize="30"
+                   FontFamily="Inter-Bold"></Label>
+            <!--<Border StrokeThickness="0"
+                    BackgroundColor="Transparent"
+                    Margin="0,0,0,16">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="search_icon.png"
+                           Aspect="AspectFill"
+                           WidthRequest="24"
+                           HeightRequest="24"></Image>
+                    <Entry Grid.Column="1"
+                           BackgroundColor="Transparent"
+                           FontSize="16"
+                           Margin="8,0"
+                           TextColor="#0A2753"></Entry>
+                    <Border VerticalOptions="End"
+                            Grid.ColumnSpan="2"
+                            BackgroundColor="#0A2753"
+                            StrokeThickness="0.7"
+                            Stroke="#0A2753"></Border>
+                </Grid>
+            </Border>-->
+            <CarouselView x:Name="countriesCv"
+                          IndicatorView="countriesCountIndicator"
+                          CurrentItemChanged="countriesCv_CurrentItemChanged">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Border HeightRequest="380"
+                                WidthRequest="236"
+                                StrokeShape="RoundRectangle 20"
+                                StrokeThickness="0">
+                            <Grid>
+                                <Image Source="{Binding CoverImage}"
+                                       Aspect="AspectFill"></Image>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="32"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition Height="96"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <VerticalStackLayout Grid.Row="2"
+                                                         BackgroundColor="#44444473">
+                                        <Label Text="{Binding Name}"
+                                               TextColor="White"
+                                               FontSize="20"
+                                               FontFamily="Inter-Medium"
+                                               LineBreakMode="WordWrap"
+                                               Margin="12,4,0,0"></Label>
+                                        <Label Text="{Binding Description}"
+                                               TextColor="#BFFFFFFF"
+                                               FontSize="14"
+                                               FontFamily="Inter-Medium"
+                                               LineBreakMode="WordWrap"
+                                               Margin="12,0"></Label>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView x:Name="countriesCountIndicator"
+                           SelectedIndicatorColor="#FF5733"
+                           IndicatorColor="Gray"
+                           IndicatorSize="8"
+                           HorizontalOptions="Center"></IndicatorView>
+            <Button HorizontalOptions="Center"
+                    Margin="0,32,0,0"
+                    BackgroundColor="#FF5733"
+                    TextColor="White"
+                    Text="Путешествовать"
+                    FontSize="16"
+                    FontFamily="Inter-Medium"
+                    Padding="32,12"
+                    CornerRadius="7"
+                    x:Name="exploreBtn"
+                    Clicked="exploreBtn_Clicked"></Button>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

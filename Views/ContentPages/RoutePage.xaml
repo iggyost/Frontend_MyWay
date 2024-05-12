@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_MyWay.Views.ContentPages.RoutePage"
+             Title="RoutePage"
+             Loaded="ContentPage_Loaded">
+    <Grid>
+        <WebView x:Name="routeWebView"
+                 HeightRequest="870"></WebView>
+        <Border HorizontalOptions="End"
+                VerticalOptions="Start"
+                HeightRequest="40"
+                WidthRequest="48"
+                Margin="0,16,4,0"
+                StrokeShape="RoundRectangle 12" 
+                BackgroundColor="#F2000000">
+            <ImageButton Margin="4"
+                         Source="arrow_left_white.png"
+                         Aspect="AspectFill"
+                         x:Name="backBtn"
+                         Clicked="backBtn_Clicked"></ImageButton>
+        </Border>
+        <ActivityIndicator x:Name="isBusyIndicator"
+                           Color="#FF5733"
+                           HeightRequest="128"
+                           WidthRequest="128"></ActivityIndicator>
+    </Grid>
+</ContentPage>

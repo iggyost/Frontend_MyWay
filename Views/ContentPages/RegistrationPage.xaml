@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_MyWay.Views.ContentPages.RegistrationPage"
+             Title="RegistrationPage"
+             Padding="-2">
+    <Grid>
+        <Image Source="background_waves.gif"
+               Aspect="AspectFill"
+               IsAnimationPlaying="True"
+               x:Name="backgroundImage"></Image>
+        <Border Opacity="0.3"
+                BackgroundColor="Black"></Border>
+        <VerticalStackLayout Margin="32,64"
+                             Spacing="12">
+            <Label Text="Создать аккаунт"
+                   TextColor="White"
+                   FontSize="26"
+                   FontFamily="Inter-Bold"
+                   Margin="8,0,0,32"></Label>
+            <VerticalStackLayout Spacing="32">
+                <Border StrokeShape="RoundRectangle 10">
+                    <Entry FontSize="16"
+                           Margin="12,0"
+                           MaxLength="30"
+                           Placeholder="E-mail"
+                           x:Name="emailEntry"></Entry>
+                </Border>
+                <Border StrokeShape="RoundRectangle 10">
+                    <Entry FontSize="16"
+                           Margin="12,0"
+                           MaxLength="30"
+                           Placeholder="Имя пользователя"
+                           x:Name="nameEntry"></Entry>
+                </Border>
+                <Border StrokeShape="RoundRectangle 10">
+                    <Grid Margin="12,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="24"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Entry FontSize="16"
+                               HorizontalOptions="Start"
+                               WidthRequest="256"
+                               IsPassword="True"
+                               MaxLength="24"
+                               x:Name="passwordEntry"
+                               Placeholder="Пароль"></Entry>
+                        <ImageButton Source="eye_closed_icon.png"
+                                     Grid.Column="1"
+                                     Aspect="AspectFill"
+                                     WidthRequest="24"
+                                     HeightRequest="24"
+                                     x:Name="hidePasswordBtn"
+                                     Clicked="hidePasswordBtn_Clicked"></ImageButton>
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+            <HorizontalStackLayout Spacing="8"
+                                   Margin="0,16,0,0">
+                <CheckBox Color="White"
+                          WidthRequest="32"
+                          HeightRequest="32"
+                          x:Name="politicsCheckBox"></CheckBox>
+                <Label Text="Я согласен с условиями, положением и политикой приватности"
+                       TextColor="White"
+                       LineBreakMode="WordWrap"
+                       WidthRequest="300"></Label>
+            </HorizontalStackLayout>
+            <VerticalStackLayout Spacing="8">
+                <Button HorizontalOptions="Center"
+                        Margin="0,32,0,0"
+                        BackgroundColor="#FF5733"
+                        TextColor="White"
+                        Text="Регистрация"
+                        FontSize="18"
+                        FontFamily="Inter-SemiBold"
+                        Padding="64,12"
+                        CornerRadius="14"
+                        x:Name="regBtn"
+                        Clicked="regBtn_Clicked"></Button>
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Margin="16,0,0,0">
+                    <Label Text="Уже есть аккаунт?"
+                           TextColor="#989898"
+                           VerticalOptions="Center"></Label>
+                    <Button Text="Авторизация"
+                            BackgroundColor="Transparent"
+                            x:Name="loginBtn"
+                            Clicked="loginBtn_Clicked"></Button>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
